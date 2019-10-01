@@ -20,6 +20,11 @@ namespace Thread {
                  */
                 virtual void enqueue(::Thread::Handlers::TaskHandler handler) = 0;
 
+                /**
+                 * Cleanup Destructor
+                 */
+                virtual ~PoolInterface() {};
+
         };
 
     }

@@ -24,6 +24,11 @@ namespace Thread {
             Pool(const unsigned int threadCount);
 
             /**
+             * Cleanup Destructor
+             */
+            ~Pool();
+
+            /**
              * Enqueue a task so it can be picked 
              * up by one of the available threads.
              * 

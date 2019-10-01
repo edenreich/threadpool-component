@@ -15,6 +15,17 @@ Pool::Pool(const unsigned int threadCount) : m_running(true)
 }
 
 /**
+ * Cleanup Destructor
+ */
+Pool::~Pool() {
+    for (auto & t : m_threads) 
+    {
+        if (t.joinable())
+            t.join();
+    }
+}
+
+/**
  * Enqueue a task so it can be picked 
  * up by one of the available threads.
  * 
