@@ -1,18 +1,18 @@
-
 #include <gtest/gtest.h>
 #include <thread/pool_factory.h>
 
+#include <thread>
+#include <iostream>
 
 using namespace Thread;
 
 
 TEST(ThreadFactoryTest, ItCreatesAThreadPool) {
-    
-    PoolFactory pool;
 
-    pool.make(5, [](const unsigned int threadId) {
-        // 
+    const Interfaces::PoolInterface & pool = PoolFactory::make(5);
+
+    pool.enqueue([](std::thread::id id) {
+        std::cout << "TEST" << '\n';
     });
 
-    EXPECT_TRUE(true);
 };

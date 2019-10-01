@@ -1,30 +1,37 @@
-#ifndef THREAD_POOL_H
-#define THREAD_POOL_H
+#ifndef THREAD_FACTORY_POOL_H
+#define THREAD_FACTORY_POOL_H
 
-#include "interfaces/pool_factory_interface.h"
+#include "interfaces/pool_interface.h"
+
+#include <mutex>
+#include <thread>
+#include <queue>
+#include <atomic>
+#include <condition_variable>
 
 
 namespace Thread {
 
-    class PoolFactory : public Interfaces::PoolFactoryInterface {
+    class PoolFactory {
 
         public:
+
+            /**
+             * Delete the default constructor.
+             */
+            PoolFactory() = delete;
 
             /**
              * Create a pool by given number of threads.
              * 
              * @param const unsigned int threadCount
-             * @param Thread::Handlers::PoolHandler handler
-             * @return void
+             * @return Interfaces::PoolInterface &
              */
-            void make(const unsigned int threadCount, Handlers::PoolHandler handler) const override;
-
-        private:
-            //
+            static const Interfaces::PoolInterface & make(const unsigned int threadCount);
 
     };
 
 }
 
 
-#endif // THREAD_POOL_H
+#endif // THREAD_FACTORY_POOL_H

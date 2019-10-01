@@ -11,6 +11,7 @@ set(BUILD_SHARED_LIBS OFF)
 set(DISTRIBUTE_DIR ${CMAKE_BINARY_DIR}/dist)
 
 set(SOURCES_CXX_FILES_THREADPOOL
+    pool.cpp
     pool_factory.cpp
 )
 
