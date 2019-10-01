@@ -25,9 +25,9 @@ namespace Thread {
              * Create a pool by given number of threads.
              * 
              * @param const unsigned int threadCount
-             * @return Interfaces::PoolInterface &
+             * @return Interfaces::PoolInterface *
              */
-            static const Interfaces::PoolInterface & make(const unsigned int threadCount);
+            static Interfaces::PoolInterface * make(const unsigned int threadCount);
 
     };
 

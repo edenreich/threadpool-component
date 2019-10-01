@@ -10,7 +10,7 @@ Pool::Pool(const unsigned int threadCount) : m_running(true)
 {
     for (unsigned int index = 0; index < threadCount; index++)
     {
-        m_threads.emplace_back(std::thread(&Pool::start, this));
+        m_threads.emplace_back(::std::thread(&Pool::start, this));
     }
 }
 
@@ -21,7 +21,7 @@ Pool::Pool(const unsigned int threadCount) : m_running(true)
  * @param Thread::Handlers::TaskHandler handler
  * @return void
  */
-void Pool::enqueue(const Handlers::TaskHandler & handler)
+void Pool::enqueue(Handlers::TaskHandler handler)
 {
     std::unique_lock<std::mutex> lock(m_mutex);
     

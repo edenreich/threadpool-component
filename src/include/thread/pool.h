@@ -21,7 +21,7 @@ namespace Thread {
              * 
              * @param const unsigned int threadCount
              */
-            explicit Pool(const unsigned int threadCount);
+            Pool(const unsigned int threadCount);
 
             /**
              * Enqueue a task so it can be picked 
@@ -30,7 +30,7 @@ namespace Thread {
              * @param Thread::Handlers::TaskHandler handler
              * @return void
              */
-            void enqueue(const Handlers::TaskHandler & handler) override;
+            void enqueue(Handlers::TaskHandler handler) override;
 
         private:
 

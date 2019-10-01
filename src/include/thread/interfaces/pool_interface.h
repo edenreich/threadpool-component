@@ -15,10 +15,10 @@ namespace Thread {
                  * Enqueue a task so it can be picked 
                  * up by one of the available threads.
                  * 
-                 * @param const Thread::Handlers::TaskHandler & handler
+                 * @param Thread::Handlers::TaskHandler & handler
                  * @return void
                  */
-                virtual void enqueue(const ::Thread::Handlers::TaskHandler & handler) = 0;
+                virtual void enqueue(::Thread::Handlers::TaskHandler handler) = 0;
 
         };
 

@@ -8,11 +8,11 @@ using namespace Thread;
  * Create a pool by given number of threads.
  * 
  * @param const unsigned int threadCount
- * @return const Interfaces::PoolInterface &
+ * @return Interfaces::PoolInterface *
  */
-const Interfaces::PoolInterface & PoolFactory::make(const unsigned int threadCount)
+Interfaces::PoolInterface * PoolFactory::make(const unsigned int threadCount)
 {
-    const Interfaces::PoolInterface & pool = Pool(threadCount);
+    Interfaces::PoolInterface * pool = new Pool(threadCount);
 
     return pool;
 }
