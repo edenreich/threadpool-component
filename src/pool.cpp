@@ -17,8 +17,9 @@ Pool::Pool(const unsigned int threadCount) : m_running(true)
 /**
  * Cleanup Destructor
  */
-Pool::~Pool() {
-    for (auto & t : m_threads) 
+Pool::~Pool()
+{
+    for (auto & t : m_threads)
     {
         if (t.joinable())
             t.join();
