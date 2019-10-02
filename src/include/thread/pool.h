@@ -37,6 +37,13 @@ namespace Thread {
              */
             void enqueue(Handlers::TaskHandler handler) override;
 
+            /**
+             * Shutdown the thread pool.
+             * 
+             * @return void
+             */
+            void shutdown() override;
+
         private:
 
             /**

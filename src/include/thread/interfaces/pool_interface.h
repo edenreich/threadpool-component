@@ -12,6 +12,11 @@ namespace Thread {
             public:
 
                 /**
+                 * Cleanup Destructor
+                 */
+                virtual ~PoolInterface() {};
+
+                /**
                  * Enqueue a task so it can be picked 
                  * up by one of the available threads.
                  * 
@@ -21,9 +26,11 @@ namespace Thread {
                 virtual void enqueue(::Thread::Handlers::TaskHandler handler) = 0;
 
                 /**
-                 * Cleanup Destructor
+                 * Shutdown the thread pool.
+                 * 
+                 * @return void
                  */
-                virtual ~PoolInterface() {};
+                virtual void shutdown() = 0;
 
         };
 

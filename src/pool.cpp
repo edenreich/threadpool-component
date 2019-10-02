@@ -38,9 +38,10 @@ void Pool::enqueue(Handlers::TaskHandler handler)
     std::unique_lock<std::mutex> lock(m_mutex);
     
     m_queue.push(handler);
-    m_conditionVariable.notify_one();
 
     lock.unlock();
+
+    m_conditionVariable.notify_all();
 }
 
 /**
@@ -54,17 +55,29 @@ void Pool::start()
     {
         std::unique_lock<std::mutex> lock(m_mutex);
 
-        m_conditionVariable.wait(lock, [&]() {
-            return !m_queue.empty();
+        m_conditionVariable.wait(lock, [this]() {
+            return m_queue.size();
         });
 
         Handlers::TaskHandler task = m_queue.front();
 
-        task(std::this_thread::get_id());
-
         m_queue.pop();
 
         lock.unlock();
+
+        task(std::this_thread::get_id());
+
+        lock.lock();
         
     } while (m_running);
+}
+
+/**
+ * Shutdown the thread pool.
+ * 
+ * @return void
+ */
+void Pool::shutdown()
+{
+    m_running = false;
 }
