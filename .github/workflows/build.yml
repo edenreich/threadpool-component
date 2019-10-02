@@ -2,13 +2,9 @@ name: build
 
 on:
   pull_request:
-    paths:
-      - '!*.md'
     branches:
       - master
   push:
-    paths:
-      - '!*.md'
     branches:
       - master
 
