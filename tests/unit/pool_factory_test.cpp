@@ -5,8 +5,6 @@
 #include <thread>
 #include <iostream>
 
-using namespace Thread;
-
 
 TEST(ThreadFactoryTest, DISABLED_ItCreatesAThreadPool) {
 
