@@ -17,8 +17,10 @@ TEST(ThreadFactoryTest, ItCreatesAThreadPool) {
         
         for (unsigned int i = 0; i < 10; i++) {
             std::cout << "Running Task 1..." << threadId << '\n';
-            std::this_thread::sleep_for (std::chrono::seconds(5));
+            std::this_thread::sleep_for(std::chrono::seconds(2));
         }
+
+        std::cout << "Task 1 finished!" << '\n';
     });
 
     pool->enqueue([](std::thread::id threadId) {
@@ -26,9 +28,13 @@ TEST(ThreadFactoryTest, ItCreatesAThreadPool) {
 
         for (unsigned int i = 0; i < 10; i++) {
             std::cout << "Running Task 2..." << threadId << '\n';
-            std::this_thread::sleep_for (std::chrono::seconds(5));
+            std::this_thread::sleep_for(std::chrono::seconds(1));
         }
+
+        std::cout << "Task 2 finished!" << '\n';
     });
+
+    std::cin.get();
 
     // pool->shutdown();
 };
