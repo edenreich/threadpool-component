@@ -21,15 +21,16 @@ TEST(ThreadFactoryTest, DISABLED_ItCreatesAThreadPool) {
         pool->enqueue([=](std::thread::id threadId) {            
             // Demonstrate a long running process
             for (unsigned int i = 0; i < 10; i++) {
-                std::cout << "\nProcessing Request Nr. " << request << " by process id " << threadId << '\n';
+                std::cout << "\nProcessing Request Nr. " << request << " by thread id " << threadId << '\n';
                 std::this_thread::sleep_for(std::chrono::milliseconds(500));
             }
 
-            std::cout << "\nProcessing " << request << " finished!" << '\n';
+            std::cout << "\nProcessing Request Nr. " << request << "has finished!" << '\n';
         });
     }
 
-    // If for whatever reason the webserver cannot exit the loop,
+    // If for whatever reason the server shutdown, 
+    // shutdown also the pool (join the threads to the main context).
     pool->shutdown();
 
     std::cout << "\nPool has been destroyed" << '\n';
