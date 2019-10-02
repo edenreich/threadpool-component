@@ -17,7 +17,6 @@ jobs:
           - windows-latest
           - macOS-latest
     runs-on: ${{matrix.os}}
-    
     steps:
       - uses: actions/checkout@master
 
@@ -30,3 +29,8 @@ jobs:
       - name: test
         if: matrix.os == 'ubuntu-latest' || matrix.os == 'macOS-latest'
         run: ./build/bin/tests
+
+      - uses: actions/upload-artifact@master
+        with:
+          name: binaries
+          path: build/dist/lib
