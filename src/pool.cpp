@@ -79,5 +79,7 @@ void Pool::shutdown()
 {
     m_running = false;
 
+    m_conditionVariable.notify_all();
+
     delete this;
 }
