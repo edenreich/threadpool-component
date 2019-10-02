@@ -13,6 +13,7 @@ An easy to use component for creating a thread pool written in C++
 #include <thread>
 #include <iostream>
 
+
 int main(int argc, char ** argv) {
 
     // Check how many threads supported on the current hardware.
@@ -21,9 +22,8 @@ int main(int argc, char ** argv) {
     // Create the pool.
     Thread::Interfaces::PoolInterface * pool = Thread::PoolFactory::make(concurentThreadsSupported);
 
-    // Enqueue 10 requests to process, this could be processed simultaneously
-    // it's only push these handlers to the queue, and they will be picked up by the next available thread,
-    // in this case we only have 10 threads in the pool, but you can increase it, depending on your hardware.
+    // Enqueue 10 requests to process, this could be processed simultaneously.
+    // It's only push these handlers to the queue, and they will be picked up by the next available thread.
     for (unsigned int request = 1; request <= 10; ++request) {
         pool->enqueue([=](std::thread::id threadId) {            
             // Demonstrate a long running process
@@ -36,7 +36,7 @@ int main(int argc, char ** argv) {
         });
     }
 
-    // If for whatever reason the server shutdown, 
+    // If for whatever reason the "web server" shutdown, 
     // shutdown also the pool (join the threads to the main context).
     pool->shutdown();
 
