@@ -1,4 +1,8 @@
 
+<p>
+  <a href="https://github.com/edenreich/threadpool-component"><img alt="Build Status" src="https://github.com/edenreich/threadpool-component/workflows/build/badge.svg"></a>
+</p>
+
 # Thread Pool Component
 
 An easy to use component for creating a thread pool written in C++
