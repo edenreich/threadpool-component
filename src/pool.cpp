@@ -41,7 +41,7 @@ void Pool::enqueue(Handlers::TaskHandler handler)
 
     lock.unlock();
 
-    m_conditionVariable.notify_all();
+    m_conditionVariable.notify_one();
 }
 
 /**
@@ -66,8 +66,6 @@ void Pool::start()
         lock.unlock();
 
         task(std::this_thread::get_id());
-
-        lock.lock();
         
     } while (m_running);
 }
@@ -80,4 +78,6 @@ void Pool::start()
 void Pool::shutdown()
 {
     m_running = false;
+
+    delete this;
 }
