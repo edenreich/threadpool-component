@@ -3,12 +3,12 @@ name: build
 on:
   pull_request:
     paths:
-      - '!**.md'
+      - '!*.md'
     branches:
       - master
   push:
     paths:
-      - '!**.md'
+      - '!*.md'
     branches:
       - master
 
