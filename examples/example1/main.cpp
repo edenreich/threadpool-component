@@ -1,12 +1,3 @@
-
-# Thread Pool Component
-
-An easy to use component for creating a thread pool written in C++
-
-## Usage
-
-```cpp
-// main.cpp
 #include <thread/pool_factory.h>
 
 #include <chrono>
@@ -43,20 +34,3 @@ int main(int argc, char ** argv) {
 
     return 0;
 }
-```
-
-## Build
-
-Run `cd build && cmake .. && cmake --build . --target install`
-
-## Distributed Files
-
-After building the project all distributed files are located in `build/dist`.
-
-## Target
-
-This project targets all platforms (it's based STL-Based).
-
-## Contributing Guidelines
-
-If you find this project interesting or have any suggestions, feel free to send a pull request. I will be more than happy to review it.
