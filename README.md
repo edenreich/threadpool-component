@@ -56,7 +56,7 @@ After building the project all distributed files are located in `build/dist`.
 
 ## Target
 
-This project targets all platforms (it's based STL-Based).
+This project targets all platforms (it's STL-Based).
 
 ## Contributing Guidelines
 
